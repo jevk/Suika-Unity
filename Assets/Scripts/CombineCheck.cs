@@ -11,6 +11,7 @@ public class CombineCheck : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (!isMerging && collision.gameObject.name == transform.gameObject.name)
         {
             isMerging = true;
