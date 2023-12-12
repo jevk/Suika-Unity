@@ -6,15 +6,13 @@ public class CombineCheck : MonoBehaviour
 {
     public GameObject[] fruitPrefabs;
 
-    private bool isMerging = false;
     private Coroutine mergingCoroutine;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (!isMerging && collision.gameObject.name == transform.gameObject.name)
+        if (collision.gameObject.name == transform.gameObject.name)
         {
-            isMerging = true;
+            Debug.Log("mergig");
             // increase the score on the "score" TextMeshPro gameobject by the index of the new fruit
             GameObject scoreText = GameObject.Find("score");
             if (scoreText != null)
@@ -78,8 +76,6 @@ public class CombineCheck : MonoBehaviour
                 }
             }
         }
-
-        isMerging = false;
     }
 
     private void OnDestroy()
