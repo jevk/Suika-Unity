@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3427063489482285156}
   - component: {fileID: 5431733082032733189}
   - component: {fileID: -6791543008106135845}
+  - component: {fileID: -6464905034593857246}
   m_Layer: 0
-  m_Name: pineapple
-  m_TagString: Untagged
+  m_Name: Pineapple
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,3 +174,16 @@ MonoBehaviour:
   - {fileID: 2973130786022369007}
   - {fileID: 3352091000966248580, guid: 77c8df1e9a96c8945a98e010e93ceee9, type: 3}
   - {fileID: 310759005007936015, guid: 821fd121e7e0c244ab9a53b8e0a89f95, type: 3}
+--- !u!114 &-6464905034593857246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2973130786022369007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476f6cb27459539469e599a10434665f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruitPrefabs: []
