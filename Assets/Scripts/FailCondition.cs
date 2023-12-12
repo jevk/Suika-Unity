@@ -28,12 +28,7 @@ public class FailCondition : MonoBehaviour
                 Destroy(fruit, 0.1f);
             }
 
-            // Show the game over screen with the score and save it to a file "scores.txt" which only stores 3 scores
-            /* scores.txt format:
-             * 12345
-             * 12344
-             * 12343
-            */
+
         }
     }
 }
