@@ -41,22 +41,6 @@ public class CombineCheck : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        // If the fruit isn't kinematic and fruit's y position is more than 2.8 for over 1 second, Debug.Log("Game Over")
-        if (!GetComponent<Rigidbody2D>().isKinematic && transform.position.y > 2.8f)
-        {
-            StartCoroutine(GameOver());
-        }
-
-    }
-
-    private IEnumerator GameOver()
-    {
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Game Over");
-    }
-
     private CombineCheck DetermineMasterFruit(CombineCheck otherCombineCheck)
     {
         // Compare unique criteria to determine the master fruit
