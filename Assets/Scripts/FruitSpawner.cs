@@ -9,8 +9,7 @@ public class FruitSpawner : MonoBehaviour
     string currentFruitName = "ReleasedFruit";
 
     // Cooldown timer
-    float spawnCooldown = 0f;
-    float spawnCooldownDuration = 1f; // 1 second cooldown
+    float previousSpawnTime = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +32,7 @@ public class FruitSpawner : MonoBehaviour
         // If the cooldown is over and fruit does not exist, spawn a random fruit prefab at the "Spawner" position from "fruitPrefabs" as "Fruit" (Cherry, Strawberry, Grapes, Dekopon, or Orange)
         // If a fruit exists already, move the fruit to the "Spawner" position
 
-        if (spawnCooldown <= 0f && !fruitExists)
+        if (Time.time - previousSpawnTime >= 1f && !fruitExists)
         {
             // spawn a random fruit prefab at the "Spawner" position from "fruitPrefabs" as "Fruit" (Cherry, Strawberry, Grapes, Dekopon, or Orange
             int fruitIndex = Random.Range(0, fruitPrefabs.Length);
@@ -45,19 +44,16 @@ public class FruitSpawner : MonoBehaviour
             currentFruitName = fruitPrefabs[fruitIndex].name;
             GameObject fruit = Instantiate(fruitPrefabs[fruitIndex], transform.position, Quaternion.identity);
             // disable the fruit's collider
-            fruit.GetComponent<Collider2D>().enabled = false;
             fruit.name = "Fruit";
             fruit.GetComponent<Rigidbody2D>().isKinematic = true;
             fruitExists = true;
 
             // Reset the cooldown timer
-            spawnCooldown = spawnCooldownDuration;
         }
-        else
+        
+        if (fruitExists)
         {
-            // Reduce the cooldown timer
-            spawnCooldown -= Time.deltaTime;
-
+            // Move the fruit to the "Spawner" position
             GameObject fruit = GameObject.Find("Fruit");
             if (fruit != null)
             {
@@ -72,10 +68,10 @@ public class FruitSpawner : MonoBehaviour
             if (fruit != null)
             {
                 fruit.name = currentFruitName;
-                fruit.GetComponent<Collider2D>().enabled = true;
                 fruit.GetComponent<Rigidbody2D>().isKinematic = false;
                 fruit.layer = 6;
                 fruitExists = false;
+                previousSpawnTime = Time.time;
             }
         }
     }
