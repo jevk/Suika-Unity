@@ -12,7 +12,6 @@ public class CombineCheck : MonoBehaviour
     {
         if (collision.gameObject.name == transform.gameObject.name)
         {
-            Debug.Log("mergig");
             // increase the score on the "score" TextMeshPro gameobject by the index of the new fruit
             GameObject scoreText = GameObject.Find("score");
             if (scoreText != null)

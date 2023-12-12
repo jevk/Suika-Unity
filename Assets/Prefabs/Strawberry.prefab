@@ -186,4 +186,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476f6cb27459539469e599a10434665f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitPrefabs: []
+  fruitPrefabs:
+  - {fileID: 4909526383381621643, guid: cc493f6dbebe23e40827899d4bb44386, type: 3}
+  - {fileID: 4875632237267343764}
+  - {fileID: 4169559309957138731, guid: 7102f662a42487c4f91488de34418432, type: 3}
+  - {fileID: 7655744701600729288, guid: 982b71d7615092f4ea1acf2da4aeaf93, type: 3}
+  - {fileID: 2048425180584501880, guid: 41828c9a599d5bc4e9084725566afa38, type: 3}
+  - {fileID: 4055532972080973609, guid: 8ecf2408e72f148488bb523cbc65e742, type: 3}
+  - {fileID: 6844317937953091754, guid: d2fbe758b338e744594e6185b12437a3, type: 3}
+  - {fileID: 8996888611579921994, guid: 15f754fbb4e9f214497d42107b338ec3, type: 3}
+  - {fileID: 2973130786022369007, guid: 8842085b638907d4fbc788b7465d4bf7, type: 3}
+  - {fileID: 3352091000966248580, guid: 77c8df1e9a96c8945a98e010e93ceee9, type: 3}
+  - {fileID: 310759005007936015, guid: 821fd121e7e0c244ab9a53b8e0a89f95, type: 3}
+  Canvas: {fileID: 0}

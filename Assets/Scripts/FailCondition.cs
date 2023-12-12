@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class FailCondition : MonoBehaviour
 {
     public GameObject[] fruitPrefabs;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Fruit")
@@ -28,6 +27,18 @@ public class FailCondition : MonoBehaviour
                 Destroy(fruit, 0.1f);
             }
 
+            // Find "Canvas" object
+            GameObject canvas = GameObject.Find("Canvas");
+            if (canvas != null)
+            {
+                // Run the "SaveJSON" function from the "Highscore" script
+                Highscore highscore = canvas.GetComponent<Highscore>();
+                if (highscore != null)
+                {
+                    highscore.SaveJSON();
+                    Debug.Log("Saved score");
+                }
+            }
 
         }
     }

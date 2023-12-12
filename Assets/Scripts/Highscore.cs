@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayedGame
 {
-    public int score;
+    public List<int> score;
 }
 
 public class Highscore : MonoBehaviour
@@ -17,9 +17,11 @@ public class Highscore : MonoBehaviour
     {
         SavePath = Application.persistentDataPath + "/games.json";
         Debug.Log(SavePath);
+        games = new PlayedGame();
+        LoadScore();
     }
 
-    private PlayedGame GetScore()
+    public void GetScore()
     {
         // Get score from "score" text object
         GameObject scoreText = GameObject.Find("score");
@@ -28,15 +30,31 @@ public class Highscore : MonoBehaviour
             TextMeshProUGUI scoreTextMesh = scoreText.GetComponent<TextMeshProUGUI>();
             if (scoreTextMesh != null)
             {
-                return new PlayedGame { score = int.Parse(scoreTextMesh.text) };
+                games.score.Add(int.Parse(scoreTextMesh.text));
             }
         }
-        return null;
+    }
+
+    public void LoadScore()
+    {
+        if (System.IO.File.Exists(SavePath))
+        {
+            string json = System.IO.File.ReadAllText(SavePath);
+            games = JsonUtility.FromJson<PlayedGame>(json);
+        } else
+        {
+            // Make the file
+            
+        }
     }
 
     public void SaveJSON()
     {
-        string saveData = JsonUtility.ToJson(GetScore());
+        GetScore();
+        games.score.Sort();
+        string saveData = JsonUtility.ToJson(games);
         System.IO.File.WriteAllText(SavePath, saveData);
+
+        Debug.Log($"Saved score {saveData} to {SavePath}");
     }
 }
