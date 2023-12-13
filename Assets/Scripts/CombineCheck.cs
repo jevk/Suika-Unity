@@ -12,7 +12,7 @@ public class CombineCheck : MonoBehaviour
     {
         if (collision.gameObject.name == transform.gameObject.name)
         {
-            // increase the score on the "score" TextMeshPro gameobject by the index of the new fruit
+            // increase the score on the "score" TextMeshPro gameobject by floor(index * 2.5 + 1)
             GameObject scoreText = GameObject.Find("score");
             if (scoreText != null)
             {
@@ -20,7 +20,7 @@ public class CombineCheck : MonoBehaviour
                 if (scoreTextMesh != null)
                 {
                     int fruitIndex = System.Array.FindIndex(this.fruitPrefabs, fruit => fruit.name == transform.gameObject.name);
-                    scoreTextMesh.text = (int.Parse(scoreTextMesh.text) + fruitIndex + 1).ToString();
+                    scoreTextMesh.text = (int.Parse(scoreTextMesh.text) + (int)Mathf.Floor(fruitIndex * 2.25f + 1f)).ToString();
                 }
             }
 
