@@ -28,15 +28,17 @@ public class FailCondition : MonoBehaviour
             }
 
             // Find "Canvas" object
-            GameObject canvas = GameObject.Find("Canvas");
-            if (canvas != null)
+            GameObject score = GameObject.Find("score");
+            if (score != null)
             {
                 // Run the "SaveJSON" function from the "Highscore" script
-                Highscore highscore = canvas.GetComponent<Highscore>();
+                Highscore highscore = score.GetComponent<Highscore>();
                 if (highscore != null)
                 {
                     highscore.SaveJSON();
                     Debug.Log("Saved score");
+
+                    highscore.UpdateScores();
                 }
             }
 
