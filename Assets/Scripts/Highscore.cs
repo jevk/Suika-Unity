@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayedGame
 {
@@ -18,7 +19,30 @@ public class Highscore : MonoBehaviour
         SavePath = Application.persistentDataPath + "/games.json";
         Debug.Log(SavePath);
         games = new PlayedGame();
+        games.score = new List<int>();
         LoadScore();
+        UpdateScores();
+    }
+    public void UpdateScores()
+    {
+
+        // Set the texts
+        GameObject NumberOne = GameObject.Find("NumberOne");
+        GameObject NumberTwo = GameObject.Find("NumberTwo");
+        GameObject NumberThree = GameObject.Find("NumberThree");
+        if (NumberOne != null && NumberTwo != null && NumberThree != null)
+        {
+            TextMeshProUGUI NumberOneText = NumberOne.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI NumberTwoText = NumberTwo.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI NumberThreeText = NumberThree.GetComponent<TextMeshProUGUI>();
+            if (NumberOneText != null && NumberTwoText != null && NumberThreeText != null)
+            {
+                NumberOneText.text = games.score[0].ToString();
+                NumberTwoText.text = games.score[1].ToString();
+                NumberThreeText.text = games.score[2].ToString();
+            }
+        }
+
     }
 
     public void GetScore()
@@ -43,15 +67,15 @@ public class Highscore : MonoBehaviour
             games = JsonUtility.FromJson<PlayedGame>(json);
         } else
         {
-            // Make the file
-            
+            System.IO.File.WriteAllText(SavePath, "{\"score\":[0,0,0]}");
         }
     }
 
     public void SaveJSON()
     {
         GetScore();
-        games.score.Sort();
+        // Sort the score list in reverse order
+        games.score.Sort((a, b) => b.CompareTo(a));
         string saveData = JsonUtility.ToJson(games);
         System.IO.File.WriteAllText(SavePath, saveData);
 
