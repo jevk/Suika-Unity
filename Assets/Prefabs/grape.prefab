@@ -97,7 +97,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4169559309957138731}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 105f01d4abcd1d04e82166d921ac5f01, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -135,11 +135,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 105f01d4abcd1d04e82166d921ac5f01, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -198,4 +198,3 @@ MonoBehaviour:
   - {fileID: 2973130786022369007, guid: 8842085b638907d4fbc788b7465d4bf7, type: 3}
   - {fileID: 3352091000966248580, guid: 77c8df1e9a96c8945a98e010e93ceee9, type: 3}
   - {fileID: 310759005007936015, guid: 821fd121e7e0c244ab9a53b8e0a89f95, type: 3}
-  Canvas: {fileID: 0}
