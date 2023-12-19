@@ -1,8 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
 public class FruitSpawner : MonoBehaviour
 {
+    public bool isRunning = true;
     int fruitNumber = 0;
     bool fruitExists = false;
     public GameObject[] fruitPrefabs;
@@ -27,12 +27,12 @@ public class FruitSpawner : MonoBehaviour
             mousePos.x = GameObject.Find("LBOUND").transform.position.x;
         if (mousePos.x > GameObject.Find("RBOUND").transform.position.x)
             mousePos.x = GameObject.Find("RBOUND").transform.position.x;
-        transform.position = new Vector3(mousePos.x, transform.position.y, transform.position.z);
+        if (isRunning) transform.position = new Vector3(mousePos.x, transform.position.y, transform.position.z);
 
         // If the cooldown is over and fruit does not exist, spawn a random fruit prefab at the "Spawner" position from "fruitPrefabs" as "Fruit" (Cherry, Strawberry, Grapes, Dekopon, or Orange)
         // If a fruit exists already, move the fruit to the "Spawner" position
 
-        if (Time.time - previousSpawnTime >= 1f && !fruitExists)
+        if (Time.time - previousSpawnTime >= 1f && !fruitExists && isRunning)
         {
             // spawn a random fruit prefab at the "Spawner" position from "fruitPrefabs" as "Fruit" (Cherry, Strawberry, Grapes, Dekopon, or Orange
             int fruitIndex = Random.Range(0, fruitPrefabs.Length);

@@ -20,7 +20,9 @@ public class CombineCheck : MonoBehaviour
                 if (scoreTextMesh != null)
                 {
                     int fruitIndex = System.Array.FindIndex(this.fruitPrefabs, fruit => fruit.name == transform.gameObject.name);
-                    scoreTextMesh.text = (int.Parse(scoreTextMesh.text) + (int)Mathf.Floor(fruitIndex * 2.25f + 1f)).ToString();
+                    string newScore = (int.Parse(scoreTextMesh.text) + (int)Mathf.Floor(fruitIndex * 2.25f + 1f)).ToString();
+                    scoreTextMesh.text = newScore;
+                    GameObject.Find("FinalScore").GetComponent<TextMeshProUGUI>().text = newScore;
                 }
             }
 

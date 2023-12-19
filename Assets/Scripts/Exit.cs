@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Exit : MonoBehaviour
@@ -11,7 +9,8 @@ public class Exit : MonoBehaviour
         // If ESC is pressed, quit the game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            GameObject anyFruit = GameObject.FindGameObjectWithTag("Fruit");
+            anyFruit.GetComponent<FailCondition>().Failure();
         }
     }
 }
