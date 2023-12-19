@@ -9,6 +9,23 @@ public class FailCondition : MonoBehaviour
     {
         if (collision.gameObject.name == "Fruit")
         {
+            // Capture a screenshot of the game and save it to a variable
+            Texture2D screenshot = ScreenCapture.CaptureScreenshotAsTexture();
+
+            // Slide the "LosingScreen" object into view
+            GameObject losingScreen = GameObject.Find("LosingScreen");
+            GameObject bg = GameObject.Find("Background");
+            if (losingScreen != null && bg != null)
+            {
+                Animator bgAnimator = bg.GetComponent<Animator>();
+                Animator losingScreenAnimator = losingScreen.GetComponent<Animator>();
+                if (losingScreenAnimator != null && bgAnimator != null)
+                {
+                    losingScreenAnimator.SetBool("Lost", true);
+                    bgAnimator.SetBool("Lost", true);
+                }
+            }
+
             // Count every fruit in the scene and destroy them while adding to the score with the formula (index + 1) * 2
             // Destroy the fruits with a 0.1 second delay from each other
             GameObject[] fruits = GameObject.FindGameObjectsWithTag("Fruit");

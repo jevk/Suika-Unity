@@ -4,9 +4,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
+public abstract class Game
+{
+    int score;
+    string date;
+}
 public class PlayedGame
 {
     public List<int> score;
+    public List<int> randomShit;
 }
 
 public class Highscore : MonoBehaviour
@@ -20,8 +26,13 @@ public class Highscore : MonoBehaviour
         Debug.Log(SavePath);
         games = new PlayedGame();
         games.score = new List<int>();
+        games.randomShit = new List<int>
+        {
+            1
+        };
         LoadScore();
         UpdateScores();
+        SaveJSON();
     }
     public void UpdateScores()
     {
